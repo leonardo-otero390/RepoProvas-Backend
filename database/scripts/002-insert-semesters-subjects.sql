@@ -19,3 +19,4 @@ VALUES
     ('Cálculo II', 2),
     ('Cálculo III', 3),
     ('Cálculo IV', 4);
+    
