@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "build": "NODE_ENV=production npx tsc --outDir dist",
-    "createDB":"cd database && bash create-database",
-    "destroyDB":"cd database && bash destroy-database",
+    "createDB": "cd database && bash create-database",
+    "destroyDB": "cd database && bash destroy-database",
     "lint": "eslint . --ext .ts",
     "start": "NODE_ENV=production NODE_TLS_REJECT_UNAUTHORIZED=0 node dist/server.js",
     "start:dev": "NODE_ENV=development npx nodemon --watch \"src/**\" --ext \"ts,json\" --exec \"ts-node src/server.ts\"",
+    "start:test": "NODE_ENV=test npx nodemon --watch \"src/**\" --ext \"ts,json\" --exec \"ts-node src/server.ts\"",
     "test": "NODE_ENV=test npx jest -i",
+    "test:watch": "NODE_ENV=test npx jest -i --watch",
     "typeorm": "ts-node ./node_modules/typeorm/cli"
   },
   "keywords": [],
@@ -19,6 +21,7 @@
   "devDependencies": {
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
+    "@types/faker": "^5.5.9",
     "@types/jest": "^26.0.24",
     "@types/node": "^16.3.3",
     "@types/pg": "^8.6.1",
@@ -30,6 +33,7 @@
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-prettier": "^4.0.0",
+    "faker": "^5.5.3",
     "husky": "7.0.4",
     "jest": "^27.0.6",
     "nodemon": "^2.0.12",

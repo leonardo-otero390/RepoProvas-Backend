@@ -15,6 +15,9 @@ export class SubjectsEntity {
   @Column()
   name: string;
 
+  @Column({ name: 'semester_id' })
+  semesterId: number;
+
   @OneToOne(() => SemestersEntity, {
     eager: true,
   })
