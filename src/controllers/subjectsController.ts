@@ -10,6 +10,7 @@ export async function list(req: Request, res: Response) {
     if (error instanceof NotFound) {
       return res.sendStatus(error.status);
     }
+    return res.sendStatus(500);
   }
   return res.send(result);
 }
