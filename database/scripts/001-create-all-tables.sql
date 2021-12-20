@@ -10,7 +10,7 @@ CREATE TABLE "subjects" (
 CREATE TABLE "semesters" (
 	"id" serial NOT NULL,
 	"name" varchar(255) NOT NULL,
-	CONSTRAINT "semester_pk" PRIMARY KEY ("id")
+	CONSTRAINT "semesters_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
 );
@@ -18,8 +18,9 @@ CREATE TABLE "semesters" (
 CREATE TABLE "exams" (
 	"id" serial NOT NULL,
 	"name" varchar(255) NOT NULL,
-	"professor_subject_id" bigint NOT NULL,
+	"professor_subject_id" integer NOT NULL,
 	"category_id" integer NOT NULL,
+	"pdf_link" varchar(255) NOT NULL,
 	CONSTRAINT "exams_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
