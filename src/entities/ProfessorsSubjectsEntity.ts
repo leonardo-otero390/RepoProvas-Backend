@@ -16,6 +16,9 @@ export class ProfessorsSubjectsEntity {
   @Column({ name: 'subject_id' })
   subjectId: number;
 
+  @Column({ name: 'professor_id' })
+  professorId: number;
+
   @OneToOne(() => ProfessorsEntity, {
     eager: true,
   })

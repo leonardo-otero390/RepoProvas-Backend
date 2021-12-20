@@ -4,6 +4,7 @@ import * as professorsService from '../services/professorsService';
 
 export async function listBySubject(req: Request, res: Response) {
   const subjectId = Number(req.query.subjectId);
+  if (Number.isNaN(subjectId)) return res.sendStatus(400);
   let result;
   try {
     result = await professorsService.listBySubject(subjectId);
