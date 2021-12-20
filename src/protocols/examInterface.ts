@@ -1,6 +1,7 @@
 export interface CreateExam {
   name: string;
-  professorSubjectId: number;
+  professorId: number;
+  subjectId: number;
   categoryId: number;
   pdfLink: string;
 }
