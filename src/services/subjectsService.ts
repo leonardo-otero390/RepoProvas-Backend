@@ -1,4 +1,5 @@
 import { getRepository } from 'typeorm';
+import { SemestersEntity } from '../entities/SemestersEntity';
 import { SubjectsEntity } from '../entities/SubjectsEntity';
 import NotFound from '../errors/NotFoundError';
 
@@ -13,4 +14,20 @@ export async function list() {
     };
   });
   return subjects;
+}
+export async function listBySemester() {
+  const semesters = await getRepository(SemestersEntity).find();
+  const subjects = await getRepository(SubjectsEntity).find();
+  if (!subjects?.length || !semesters?.length) throw new NotFound();
+
+  const arrayOfSemesters = semesters.map((semester) => {
+    const arrayOfSubjects = subjects
+      .filter((subject) => semester.id === subject.semesterId)
+      .map((subject) => {
+        return { id: subject.id, name: subject.name };
+      });
+    return { semester, arrayOfSubjects };
+  });
+
+  return arrayOfSemesters;
 }

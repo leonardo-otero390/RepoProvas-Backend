@@ -29,3 +29,17 @@ describe('GET /subjects', () => {
     expect(response.body).toMatchObject({});
   });
 });
+describe('GET /subjects/by-semesters', () => {
+  beforeAll(async () => createThreeSubjects());
+  it('should return 200', async () => {
+    const response = await agent.get('/subjects/by-semesters');
+    expect(response.status).toBe(200);
+    expect(response.body.length).toBeGreaterThan(0);
+  });
+
+  it('should return 404', async () => {
+    const response = await agent.get('/subjects/by-semesters');
+    expect(response.status).toBe(404);
+    expect(response.body).toMatchObject({});
+  });
+});

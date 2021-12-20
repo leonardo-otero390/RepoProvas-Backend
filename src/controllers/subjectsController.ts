@@ -15,3 +15,16 @@ export async function list(req: Request, res: Response) {
   }
   return res.send(result);
 }
+
+export async function listBySemester(req: Request, res: Response) {
+  let result;
+  try {
+    result = await subjectsService.listBySemester();
+  } catch (error) {
+    if (!error.status) {
+      return res.sendStatus(HttpStatusCode.INTERNAL_SERVER_ERROR);
+    }
+    return res.sendStatus(error.status);
+  }
+  return res.send(result);
+}
