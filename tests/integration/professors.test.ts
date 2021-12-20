@@ -1,4 +1,3 @@
-import '../../src/setup';
 import { getConnection } from 'typeorm';
 import supertest from 'supertest';
 import app, { init } from '../../src/app';

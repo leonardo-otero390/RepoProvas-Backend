@@ -10,7 +10,6 @@ export async function create(req: Request, res: Response) {
     await validateExamBody(body);
     result = await examsService.create(body);
   } catch (error) {
-    console.log(error.message);
     if (!error.status) {
       return res.sendStatus(HttpStatusCode.INTERNAL_SERVER_ERROR);
     }
