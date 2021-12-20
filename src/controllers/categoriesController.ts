@@ -1,16 +1,12 @@
 import { Request, Response } from 'express';
 import { HttpStatusCode } from '../errors/http.enum.ts';
 import NotFound from '../errors/NotFoundError';
-import * as professorsService from '../services/professorsService';
+import * as categoriesService from '../services/categoriesService';
 
-export async function listBySubject(req: Request, res: Response) {
-  const subjectId = Number(req.query.subjectId);
-  if (Number.isNaN(subjectId)) {
-    return res.sendStatus(HttpStatusCode.BAD_REQUEST);
-  }
+export async function list(req: Request, res: Response) {
   let result;
   try {
-    result = await professorsService.listBySubject(subjectId);
+    result = await categoriesService.list();
   } catch (error) {
     if (error instanceof NotFound) {
       return res.sendStatus(error.status);
