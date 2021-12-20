@@ -54,3 +54,11 @@ describe('POST /exams', () => {
     expect(response.status).toBe(500);
   });
 });
+
+describe('GET /exams/categories', () => {
+  it('should return 200', async () => {
+    const response = await agent.get('/exams/categories');
+    expect(response.status).toBe(200);
+    expect(response.body.length).toBeGreaterThan(0);
+  });
+});

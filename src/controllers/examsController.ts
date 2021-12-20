@@ -17,3 +17,16 @@ export async function create(req: Request, res: Response) {
   }
   return res.status(HttpStatusCode.CREATED).send(result);
 }
+
+export async function listCategories(req: Request, res: Response) {
+  let result;
+  try {
+    result = await examsService.listCategories();
+  } catch (error) {
+    if (!error.status) {
+      return res.sendStatus(HttpStatusCode.INTERNAL_SERVER_ERROR);
+    }
+    return res.sendStatus(error.status);
+  }
+  return res.send(result);
+}
